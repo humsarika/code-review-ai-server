@@ -12,23 +12,18 @@ const pingRoutes = require('./routes/pingRoutes')
 
 const app = express();
 
-const allowedOrigins = [
-  'http://localhost:5173', // for Vite dev server
-  'https://code-review-ai-two.vercel.app/' // for production
-];
-
+const cors = require('cors');
 app.use(cors({
-  origin: allowedOrigins,
-  methods: ['GET', 'POST'],
-  credentials: true,
+  origin: 'https://code-review-ai-two.vercel.app'
 }));
+
 
 app.use(express.json());
 
 
 const limiter = rateLimit({
     windowMs: 60 * 1000, // 1 minute
-    max: 2 // max 10 requests per minute per IP
+    max: 10 // max 10 requests per minute per IP
 });
 
 app.use(limiter);
