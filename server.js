@@ -8,14 +8,10 @@ const rateLimit = require('express-rate-limit');
 const reviewRoutes = require('./routes/reviewRoutes');
 const pingRoutes = require('./routes/pingRoutes')
 
-
-
-const app = express();
-
-const cors = require('cors');
 app.use(cors({
   origin: 'https://code-review-ai-two.vercel.app'
 }));
+const app = express();
 
 
 app.use(express.json());
