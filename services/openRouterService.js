@@ -1,8 +1,8 @@
 const axios = require('axios');
 require('dotenv').config();
 
-const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
+const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
 const reviewCode = async (userCode) => {
     const prompt = `
@@ -50,8 +50,8 @@ ${userCode}
 
     `;
 
-    const response = await axios.post(OPENROUTER_URL, {
-        model: "microsoft/mai-ds-r1:free",
+    const response = await axios.post(GROQ_URL, {
+        model: "llama3-70b-8192",
         messages: [
             { role: "system", content: "You are a professional code reviewer." },
             { role: "user", content: prompt }
@@ -62,10 +62,10 @@ ${userCode}
         presence_penalty: 0
     }, {
         headers: {
-            'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+            'Authorization': `Bearer ${GROQ_API_KEY}`,
             'Content-Type': 'application/json'
         },
-         timeout: 30000 // wait for 30 seconds
+         timeout: 10000 // wait for 10 seconds
     });
 
     return response.data.choices[0].message.content;
