@@ -10,10 +10,18 @@ const reviewRoutes = require('./routes/reviewRoutes');
 
 
 const app = express();
+
+const allowedOrigins = [
+  'http://localhost:5173', // for Vite dev server
+  'https://your-vercel-site.vercel.app' // for production
+];
+
 app.use(cors({
-    origin: 'https://your-vercel-site.vercel.app'
-}
-));
+  origin: allowedOrigins,
+  methods: ['GET', 'POST'],
+  credentials: true,
+}));
+
 app.use(express.json());
 
 
