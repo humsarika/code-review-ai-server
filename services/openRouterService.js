@@ -64,7 +64,8 @@ ${userCode}
         headers: {
             'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
             'Content-Type': 'application/json'
-        }
+        },
+         timeout: 30000 // wait for 30 seconds
     });
 
     return response.data.choices[0].message.content;
