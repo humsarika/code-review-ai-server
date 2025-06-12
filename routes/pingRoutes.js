@@ -1,9 +1,9 @@
 const express = require('express');
-const { getReview } = require('../controllers/reviewController');
 
 const router = express.Router();
 
-router.post('/', getReview);
-
+router.get('/', (req, res) => {
+    res.send('pong');
+});
 
 module.exports = router;

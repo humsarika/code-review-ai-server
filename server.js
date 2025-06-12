@@ -6,6 +6,7 @@ const rateLimit = require('express-rate-limit');
 
 
 const reviewRoutes = require('./routes/reviewRoutes');
+const pingRoutes = require('./routes/pingRoutes')
 
 
 
@@ -34,6 +35,7 @@ app.use(limiter);
 
 
 app.use('/api/review', reviewRoutes);
+app.use('/api/ping', pingRoutes);
 
 
 app.use(errorHandler);
