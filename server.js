@@ -11,7 +11,7 @@ const reviewRoutes = require('./routes/reviewRoutes');
 
 const app = express();
 app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: 'https://your-vercel-site.vercel.app'
 }
 ));
 app.use(express.json());
